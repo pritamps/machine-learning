@@ -226,7 +226,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -278,22 +278,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
 
-<span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Calculate number of features. We need to subtract 1 from the number of columns because</span>
+<span class="c1"># one of the columns is the target column</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> 
 
-<span class="c1"># TODO: Calculate passing students</span>
+<span class="c1"># Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;passed&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">)</span>
 
-<span class="c1"># TODO: Calculate failing students</span>
+<span class="c1"># Calculate failing students</span>
 <span class="n">n_failed</span> <span class="o">=</span> <span class="n">n_students</span> <span class="o">-</span> <span class="n">n_passed</span>
 
-<span class="c1"># TODO: Calculate graduation rate</span>
+<span class="c1"># Calculate graduation rate</span>
 <span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_students</span> <span class="o">*</span> <span class="mi">100</span>
 
 <span class="c1"># Print the results</span>
@@ -315,7 +316,7 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -341,7 +342,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -423,7 +424,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -494,7 +495,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -566,7 +567,12 @@ Testing set has 95 samples.
 <p>This is a supervised learning problem since we have all of the labels for the training data. Moreover, there are many features, which means that I need algorithms that can deal with many features for fewer training examples. SVM would be a good fit for it, and also decision trees. I will also try neural networks, because I am least comfortable with NNs and want to spend some time implementing NNs.</p>
 <p>The general applications, strengths and weakness of each model:</p>
 <h5 id="Decision-Trees">Decision Trees<a class="anchor-link" href="#Decision-Trees">&#182;</a></h5><p>. <strong><em>General Applications</em></strong></p>
-<p>Decision trees are used extensively in multi-class classification problems the features are discrete. In the case of continuous features, bins may be used.</p>
+<p>Decision trees are used extensively in multi-class classification problems the features are discrete. In the case of continuous features, bins may be used. Some actual applications are</p>
+<ol>
+<li><a href="https://www.jstor.org/stable/40680533?seq=1#page_scan_tab_contents">Filtering data from the Hubble Space Telescope</a></li>
+<li>Text processing</li>
+<li>Data Mining</li>
+</ol>
 <p>. <strong><em>Strengths</em></strong></p>
 <p>Some of the strengths of decision trees are:</p>
 <ol>
@@ -580,8 +586,15 @@ Testing set has 95 samples.
 <li>Prone to overfitting</li>
 <li>Small changes in training data can cause significant changes in the tree. The trees are affected strongly by outliers and the algorithm designers have to be careful</li>
 </ol>
+<p>. <strong><em> Why I chose decision trees </em></strong></p>
+<p>Given that the dataset has fewer examples and has many features, I felt that decision trees would be a good algorithm to try on this data set. Also, it makes intuitive sense to ask for a student: what is their family size? are they in a relationship?</p>
 <h5 id="K-nearest-neighbors">K-nearest neighbors<a class="anchor-link" href="#K-nearest-neighbors">&#182;</a></h5><p>. <strong><em>General Applications</em></strong></p>
-<p>The KNN algorithm is used in a variety of applications, including facial recognition and other computer vision places, search, and in general spaces where the decision boundaries are not easily definable.</p>
+<p>The KNN algorithm is used in a variety of applications, including:</p>
+<ol>
+<li>Facial recognition </li>
+<li>Image search</li>
+<li><a href="https://saravananthirumuruganathan.wordpress.com/2010/05/17/a-detailed-introduction-to-k-nearest-neighbor-knn-algorithm/">Protein protein interaction. Huh?!</a></li>
+</ol>
 <p>. <strong><em>Strengths</em></strong></p>
 <ol>
 <li>Very fast training time, since the training is basically zero. Given the training data, you can directly head to classification</li>
@@ -594,8 +607,16 @@ Testing set has 95 samples.
 <li>The complexity KNN algorithm grows very quickly as the training set increases in size, since every training point has to be considered for classification of a new point</li>
 <li>The curse of dimensionality is strong in this one</li>
 </ol>
+<p>. <strong><em> Why I chose this algorithm </em></strong></p>
+<p>Given a student, it makes for a reasonable hypothesis that his performance would match that of other students, provided we have chosen the right metrics. As the quote goes, <a href="http://www.goodreads.com/quotes/1798-you-are-the-average-of-the-five-people-you-spend">"You are the average of the five people who you spend the most time with."</a> . This is why I felt that KNN would be a good algorithm to try here.</p>
 <h5 id="SVM">SVM<a class="anchor-link" href="#SVM">&#182;</a></h5><p>. <strong><em>General Applications</em></strong></p>
-<p>SVMs are used in many, many ML applications are generally the first stop in the selection of an algorithm. They are used in image recognition, search engines, databases. You name an ML field, SVM is probably used there</p>
+<p>SVMs are used in many, many ML applications are generally the first stop in the selection of an algorithm. For example, they are used in:</p>
+<ol>
+<li>Image recognition</li>
+<li>Search engines </li>
+<li>Databases</li>
+<li>Extension to Structured SVM allows for usage with NLP as well</li>
+</ol>
 <p>. <strong><em>Strengths</em></strong></p>
 <ol>
 <li>Easily generalizes to high dimensional spaces</li>
@@ -610,6 +631,8 @@ Testing set has 95 samples.
 <li>Slow training time, since there is a quadratic optimization going on every time</li>
 <li>Not easy to get a probabilistic score for each training example, which would have been useful to the board of directors at the school in this problem</li>
 </ol>
+<p>. <strong><em> Why I chose this algorithm </em></strong></p>
+<p>The number of features here is quite high, and hence the feature space is high-dimensional, which makes SVM a good fit for this problem. However, the real reason I chose it here is that I feel that SVM is always a good benchmark to start playing with the features and the data. I expected that SVM would do worse than the other two, but, as it turned out I was wrong!</p>
 
 </div>
 </div>
@@ -634,7 +657,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -707,20 +730,20 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import the three supervised learning models from sklearn</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 
-<span class="c1"># TODO: Initialize the three models</span>
+<span class="c1"># Initialize the three models</span>
 <span class="n">clf_DTC</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">clf_SVC</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
 <span class="n">clf_KNC</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
 
-<span class="c1"># TODO: Set up the training set sizes</span>
+<span class="c1"># Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
 <span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
 
@@ -730,8 +753,10 @@ Testing set has 95 samples.
 <span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span>
 <span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span>
 
-<span class="c1"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_KNC</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="c1"># Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
+<span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="p">[</span><span class="n">clf_DTC</span><span class="p">,</span> <span class="n">clf_SVC</span><span class="p">,</span> <span class="n">clf_KNC</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -744,11 +769,59 @@ Testing set has 95 samples.
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a KNeighborsClassifier using a training set size of 300. . .
-Trained model in 0.0026 seconds
-Made predictions in 0.0075 seconds.
+<pre>Training a DecisionTreeClassifier using a training set size of 100. . .
+Trained model in 0.0053 seconds
+Made predictions in 0.0009 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.6441.
+Training a DecisionTreeClassifier using a training set size of 200. . .
+Trained model in 0.0016 seconds
+Made predictions in 0.0005 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.7077.
+Training a DecisionTreeClassifier using a training set size of 300. . .
+Trained model in 0.0045 seconds
+Made predictions in 0.0008 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0003 seconds.
+F1 score for test set: 0.6720.
+Training a SVC using a training set size of 100. . .
+Trained model in 0.0043 seconds
+Made predictions in 0.0016 seconds.
+F1 score for training set: 0.8591.
+Made predictions in 0.0011 seconds.
+F1 score for test set: 0.8333.
+Training a SVC using a training set size of 200. . .
+Trained model in 0.0043 seconds
+Made predictions in 0.0027 seconds.
+F1 score for training set: 0.8581.
+Made predictions in 0.0012 seconds.
+F1 score for test set: 0.8408.
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0089 seconds
+Made predictions in 0.0072 seconds.
+F1 score for training set: 0.8584.
+Made predictions in 0.0022 seconds.
+F1 score for test set: 0.8462.
+Training a KNeighborsClassifier using a training set size of 100. . .
+Trained model in 0.0036 seconds
+Made predictions in 0.0039 seconds.
+F1 score for training set: 0.7883.
+Made predictions in 0.0011 seconds.
+F1 score for test set: 0.7727.
+Training a KNeighborsClassifier using a training set size of 200. . .
+Trained model in 0.0006 seconds
+Made predictions in 0.0043 seconds.
+F1 score for training set: 0.8345.
+Made predictions in 0.0022 seconds.
+F1 score for test set: 0.7971.
+Training a KNeighborsClassifier using a training set size of 300. . .
+Trained model in 0.0007 seconds
+Made predictions in 0.0063 seconds.
 F1 score for training set: 0.8558.
-Made predictions in 0.0032 seconds.
+Made predictions in 0.0021 seconds.
 F1 score for test set: 0.7681.
 </pre>
 </div>
@@ -932,8 +1005,17 @@ Pritam Sukumar</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>Dear Board of Supervisors,</p>
-<p>The SVM is an algorithm commonly used to separate (classify) data. In this case, for example, given a new student's data, we want to know whether he or she is at risk of failing to graduate. How this algorithm works is as follows: we use for training, the data for students for whom we already know the result. Given sufficient data of both sides (passing and not-passing), the algorithm lands upon a boundary that minimizes the error of misclassification. That means that most of the passing students will be on one side of this boundary, and most of the failing students will be on the other side.</p>
-<p>The algorithm now goes further and says that the only points that are of interest are the support vectors, which are the points on both sides closest to the boundary. They, in effect, support this boundary. Using these points, and given a new point, the algorithm then tells us whether we can expect this student to fail or to pass.</p>
+<p>The SVM is an algorithm commonly used to separate (classify) data. In this case, for example, given a new student's data, we want to know whether he or she is at risk of failing to graduate. Like most Machine Learning algorithm, the algorithm works in two stages: training and testing. I will describe each of these stages separately to give you a better idea.</p>
+<p><strong><em> Training </em></strong> 
+we use for training, the data for students for whom we already know the result. Given sufficient data of both sides (passing and not-passing), the algorithm lands upon a boundary that minimizes the error of misclassification. That means that most of the passing students will be on one side of this boundary, and most of the failing students will be on the other side.</p>
+<p>Imagine data on a plane, and having only two features (along each of the axes). If we've chosen our features wisely and the data can be separated with a line, the SVM algorithm will find a line that separates the data into two regions. In the figure below (<a href="https://www.mql5.com/en/articles/584">ref</a>), you can see the SVM algorithm converging step by step on the boundary.</p>
+<p><img src="svmregression.gif" alt="alt text" title="Title"></p>
+<p>What is interesting in the above is that the data is <strong>not</strong> linearly separable. How then, you might ask, did the SVM come up with this separator? What we can do with SVM is that we can introduce an extra dimension. In this case, that would mean adding a value corresponding to each of the points on the plane. So in this third dimension, each point can corresponds to a point sticking out of the page at different heights. What we can do is choose a mapping of "point" to "height" so that we can be sure that the data can in fact be separated when this extra dimension is introduced. Isn't that cool? This is what is called, in MLspeak, the Kernel Trick. And the mapping is called a Kernel.</p>
+<p>The algorithm now goes further and says that the only points that are of interest are the support vectors, which are the points on both sides closest to the boundary. They, in effect, support this boundary. The advantage of these points is that, in classifying a new point, the algorithm only needs to consider the values at these support vectors, rather than the whole set of training data.</p>
+<p>There are many parameters that can be tuned for SVMs, including the kernel type, the learning parameter (which affects how much the line moves in each step), and so on, which makes SVMs extremely hackable and good to play with, for various problems.</p>
+<p><strong><em> Prediction </em></strong> 
+At the end of training, we get a simple equation that we just input the features for a new student, and then we get the output!</p>
+<p>Cool, eh?</p>
 
 </div>
 </div>
