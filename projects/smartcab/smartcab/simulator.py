@@ -25,7 +25,7 @@ class Simulator(object):
         'orange'  : (255, 128,   0)
     }
 
-    def __init__(self, env, size=None, update_delay=1.0, display=True, live_plot=False):
+    def __init__(self, env, size=None, update_delay=1.0, display=True, live_plot=True):
         self.env = env
         self.size = size if size is not None else ((self.env.grid_size[0] + 1) * self.env.block_size, (self.env.grid_size[1] + 1) * self.env.block_size)
         self.width, self.height = self.size
