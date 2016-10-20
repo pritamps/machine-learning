@@ -50,7 +50,7 @@ class QLearner:
             self.Q[(current_state, action)] = (1 - self.alpha) * val + self.alpha * (reward + self.gamma * self.get_max_a_q(next_state))
         else:
             # This is the first time visiting the state. Set the reward to the reward of the state
-            self.Q[(current_state, action)] = reward
+            self.Q[(current_state, action)] = 3
 
     def get_max_a_q(self, state):
         """
@@ -196,10 +196,10 @@ def run(perform_grid_search=False):
         print df.to_csv(index=False)
     else:
         success_rate = run_simulation(Environment.valid_actions, gamma=0.2,
-                                      alpha=0.6, epsilon0=0.1, decay_epsilon=True, live_plot=True)
+                                      alpha=0.6, epsilon0=0.1, decay_epsilon=True, live_plot=False)
         print "Success rate: " + str(success_rate)
     # NOTE: To quit midway, press Esc or close pygame window, or hit Ctrl+C on the command-line
 
 
 if __name__ == '__main__':
-    run(perform_grid_search=False)
+    run(perform_grid_search=True)
